@@ -120,8 +120,3 @@ app/                 api.py (FastAPI) and ui.py (Streamlit, loads the model dire
 tests/               pytest for features, evaluation, the saved model, the API and the app
 reports/             report and slides (md + PDF), figures, screenshots, result tables written by train.py
 ```
-
-## Use of AI assistance
-
-An AI coding assistant (Claude) helped write and debug the code, notebooks and documents. All modelling decisions are
-explained in the report and were checked by re-running the code.
