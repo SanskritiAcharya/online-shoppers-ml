@@ -76,6 +76,8 @@ python src/train.py          # about 2 minutes: baselines, tuning, final model, 
 pytest -q                    # 23 tests: features, evaluation helpers, saved model, API, Streamlit app
 ```
 
+GitHub Actions (`.github/workflows/ci.yml`) runs the tests and builds the Docker image on every push.
+
 **Track.** `mlflow ui --backend-store-uri sqlite:///mlflow.db` then open <http://127.0.0.1:5000>. The experiment is
 `online-shoppers-popup`. Every run carries the tags `data_md5` and `git_commit`. Reload the final model with
 `mlflow.sklearn.load_model("models:/shoppers-popup-purchase@champion")`.
