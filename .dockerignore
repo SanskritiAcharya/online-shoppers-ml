@@ -1,0 +1,9 @@
+.venv
+.git
+mlflow.db
+mlruns
+__pycache__
+.pytest_cache
+notebooks
+reports/screenshots
+reports/*.pdf
