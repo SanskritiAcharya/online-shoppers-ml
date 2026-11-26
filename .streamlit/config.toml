@@ -7,7 +7,7 @@ textColor = "#1b1f27"
 borderColor = "#e2e5ea"
 showWidgetBorder = true
 baseRadius = "8px"
-baseFontSize = 15
+baseFontSize = 16
 font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
 headingFontWeights = 600
 chartCategoricalColors = ["#1d5f8a", "#9aa3ae", "#5b8db3", "#c8ced6"]

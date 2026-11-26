@@ -47,100 +47,118 @@ DEVICE_DEFAULTS = {"OperatingSystems": 2, "Browser": 2, "Region": 1, "TrafficTyp
 
 CSS = """
 <style>
+/* Type scale: 13 (caps labels) / 14 small / 16 body (15 in tables) / 18 lead / 20 section / 28 numbers / 40 display */
 :root {
-  --accent: #1d5f8a; --accent-soft: #eaf1f6; --ink: #1b1f27; --ink-2: #4a5361; --ink-3: #737c8a;
+  --accent: #1d5f8a; --accent-soft: #eaf1f6; --ink: #1b1f27; --ink-2: #4a5361; --ink-3: #646d7a;
   --line: #e2e5ea; --line-faint: #eef0f3; --well: #f7f8fa;
 }
 html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; }
 header[data-testid="stHeader"], [data-testid="stToolbar"], [data-testid="stDecoration"],
 [data-testid="stStatusWidget"], #MainMenu, footer, .stDeployButton { display: none !important; }
-.block-container, [data-testid="stMainBlockContainer"] { max-width: 1200px; padding: 2.25rem 2rem 4rem; }
-[data-testid="stMarkdownContainer"] p { line-height: 1.55; }
+.block-container, [data-testid="stMainBlockContainer"] { max-width: 1200px; padding: 2.75rem 2rem 4rem; }
+[data-testid="stMarkdownContainer"] p { line-height: 1.5; text-wrap: pretty; }
+input { font-variant-numeric: tabular-nums; }
+[data-testid="stWidgetLabel"] p { font-size: 14px !important; font-weight: 500; color: var(--ink-2); }
 
-.app-head { margin-bottom: 22px; }
-.app-head .eyebrow { font-size: 13px; color: var(--ink-3); font-weight: 500; margin-bottom: 6px; }
-.app-head .title { font-size: 28px; line-height: 1.2; font-weight: 650; color: var(--ink); letter-spacing: -0.01em; }
-.app-head .sub { font-size: 15px; color: var(--ink-2); margin-top: 6px; max-width: 760px; line-height: 1.5; }
+.app-head { margin-bottom: 28px; }
+.app-head .title { font-size: 40px; line-height: 1.15; font-weight: 700; color: var(--ink); letter-spacing: -0.025em;
+  text-wrap: balance; }
+.app-head .sub { font-size: 18px; color: var(--ink-2); margin-top: 10px; max-width: 60ch; line-height: 1.5;
+  text-wrap: pretty; }
 
-.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 8px; }
-.kpi { border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px 15px; background: #fff; }
-.kpi .label { font-size: 13px; color: var(--ink-2); font-weight: 500; }
-.kpi .value { font-size: 26px; font-weight: 650; color: var(--ink); margin-top: 4px; font-variant-numeric: tabular-nums; }
-.kpi .value .unit { font-size: 15px; color: var(--ink-3); font-weight: 500; }
-.kpi .note { font-size: 12.5px; color: var(--ink-3); margin-top: 2px; line-height: 1.4; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 12px; }
+.kpi { border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; background: #fff; }
+.kpi .label { font-size: 14px; color: var(--ink-2); font-weight: 500; line-height: 1.3; }
+.kpi .value { font-size: 28px; font-weight: 650; color: var(--ink); margin-top: 6px; line-height: 1.15;
+  letter-spacing: -0.015em; font-variant-numeric: tabular-nums; }
+.kpi .note { font-size: 14px; color: var(--ink-3); margin-top: 4px; line-height: 1.4; font-variant-numeric: tabular-nums;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .kpi.lead .value { color: var(--accent); }
 .kpi.muted .value { color: var(--ink-3); }
 
 div[data-baseweb="tab-list"] { gap: 4px; border-bottom: 1px solid var(--line); }
 button[data-baseweb="tab"] { padding: 10px 14px; user-select: none; -webkit-user-select: none; touch-action: manipulation; }
-button[data-baseweb="tab"] p { font-size: 15px !important; font-weight: 500; }
+button[data-baseweb="tab"] p, [data-testid="stTab"] p { font-size: 16px !important; font-weight: 500; }
 div[data-baseweb="tab-highlight"] { height: 2px; }
 div[data-baseweb="tab-border"] { display: none; }
-[data-testid="stTabs"] [data-baseweb="tab-panel"] { padding-top: 22px; }
+[data-testid="stTabs"] [data-baseweb="tab-panel"] { padding-top: 26px; }
 button, [role="button"] { touch-action: manipulation; }
+[data-testid="stTab"] { white-space: nowrap; flex: none; }
+div[data-baseweb="tab-list"], [role="tablist"] { overflow-x: auto; scrollbar-width: none; }
+[data-testid="stSliderThumbValue"] { width: auto !important; white-space: nowrap; }
+[data-testid="stSliderThumbValue"] p, [data-testid="stSliderTickBar"] p { white-space: nowrap; font-size: 14px !important;
+  font-variant-numeric: tabular-nums; }
 
-.section-title { font-size: 17px; font-weight: 600; color: var(--ink); margin: 6px 0 4px; }
-.section-note { font-size: 13.5px; color: var(--ink-3); margin-bottom: 12px; line-height: 1.5; }
-.group-label { font-size: 12.5px; font-weight: 600; color: var(--ink-3); margin: 2px 0 6px; letter-spacing: 0.01em; }
+.section-title { font-size: 20px; font-weight: 650; color: var(--ink); margin: 4px 0 14px; line-height: 1.15;
+  letter-spacing: -0.01em; text-wrap: balance; }
+.section-title.with-note { margin-bottom: 6px; }
+.section-note { font-size: 16px; color: var(--ink-2); margin-bottom: 16px; line-height: 1.5; max-width: 60ch;
+  text-wrap: pretty; }
+.group-label { font-size: 13px; font-weight: 600; color: var(--ink-2); margin: 2px 0 8px; letter-spacing: 0.06em;
+  text-transform: uppercase; }
+.note { font-size: 14px; color: var(--ink-2); line-height: 1.5; margin-top: 12px; max-width: 75ch; text-wrap: pretty;
+  font-variant-numeric: tabular-nums; }
 
-.pill { display: inline-block; font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 999px;
+.pill { display: inline-block; font-size: 14px; font-weight: 600; padding: 4px 12px; border-radius: 999px;
   white-space: nowrap; line-height: 1.3; }
 .pill.accent { background: var(--accent-soft); color: var(--accent); }
 .pill.plain { background: var(--well); color: var(--ink-2); border: 1px solid var(--line); }
 
 .result-card { border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
-.result-card .label { font-size: 13px; color: var(--ink-2); font-weight: 500; }
-.result-card .big { font-size: 44px; font-weight: 650; color: var(--ink); line-height: 1.1; margin: 6px 0 10px;
-  font-variant-numeric: tabular-nums; }
-.result-card .action { font-size: 14.5px; color: var(--ink-2); margin-top: 14px; line-height: 1.5; }
-.scale { position: relative; height: 8px; border-radius: 4px; background: var(--line-faint); margin: 22px 0 6px; }
+.result-card .label { font-size: 14px; color: var(--ink-2); font-weight: 500; }
+.result-card .big { font-size: 40px; font-weight: 700; color: var(--ink); line-height: 1.1; margin: 6px 0 12px;
+  letter-spacing: -0.025em; font-variant-numeric: tabular-nums; }
+.result-card .action { font-size: 16px; color: var(--ink); margin-top: 16px; line-height: 1.5; text-wrap: pretty; }
+.scale { position: relative; height: 8px; border-radius: 4px; background: var(--line-faint); margin: 22px 0 8px; }
 .scale .above { position: absolute; top: 0; bottom: 0; right: 0; background: var(--accent-soft); border-radius: 0 4px 4px 0; }
 .scale .mark { position: absolute; top: -5px; width: 3px; height: 18px; border-radius: 2px; background: var(--accent); }
 .scale .avg { position: absolute; top: -2px; width: 1px; height: 12px; background: var(--ink-3); }
-.scale-labels { position: relative; height: 16px; font-size: 12px; color: var(--ink-3); }
+.scale-labels { position: relative; height: 20px; font-size: 14px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .scale-labels span { position: absolute; white-space: nowrap; }
 
 .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line);
-  border-radius: 10px; margin: 4px 0 18px; }
-.stat { padding: 12px 16px; border-left: 1px solid var(--line-faint); }
+  border-radius: 10px; margin: 4px 0 20px; }
+.stat { padding: 14px 18px; border-left: 1px solid var(--line-faint); }
 .stat:first-child { border-left: none; }
-.stat .k { font-size: 12.5px; color: var(--ink-3); font-weight: 500; }
-.stat .v { font-size: 20px; font-weight: 650; color: var(--ink); margin-top: 2px; font-variant-numeric: tabular-nums; }
+.stat .k { font-size: 14px; color: var(--ink-2); font-weight: 500; }
+.stat .v { font-size: 28px; font-weight: 650; color: var(--ink); margin-top: 4px; line-height: 1.15; letter-spacing: -0.015em;
+  font-variant-numeric: tabular-nums; }
 .stat .v.accent { color: var(--accent); }
-.stat .s { font-size: 12.5px; color: var(--ink-3); margin-top: 1px; }
+.stat .s { font-size: 14px; color: var(--ink-3); margin-top: 2px; font-variant-numeric: tabular-nums; }
 
 .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
-table.tbl { width: 100%; border-collapse: collapse; font-size: 14px; color: var(--ink); }
-table.tbl th { font-size: 12.5px; font-weight: 500; color: var(--ink-3); text-align: left; padding: 8px 12px;
-  border-bottom: 1px solid var(--line); white-space: nowrap; }
-table.tbl td { padding: 10px 12px; border-bottom: 1px solid var(--line-faint); vertical-align: middle; }
+table.tbl { width: 100%; border-collapse: collapse; font-size: 15px; color: var(--ink); font-variant-numeric: tabular-nums; }
+table.tbl th { font-size: 13px; font-weight: 600; color: var(--ink-2); text-align: left; padding: 8px 12px;
+  border-bottom: 1px solid var(--line); white-space: nowrap; letter-spacing: 0.06em; text-transform: uppercase; }
+table.tbl td { padding: 10px 12px; border-bottom: 1px solid var(--line-faint); vertical-align: middle; line-height: 1.4; }
 table.tbl tr:last-child td { border-bottom: none; }
-table.tbl .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.tbl .num { text-align: right; white-space: nowrap; }
 table.tbl th.num { text-align: right; }
 table.tbl .dim { color: var(--ink-3); }
+table.tbl td.dim { font-size: 14px; }
 table.tbl .name { font-weight: 500; }
 table.tbl tr.hl td { background: var(--accent-soft); font-weight: 600; }
-table.tbl tr.group td { font-size: 12.5px; font-weight: 600; color: var(--ink-3); background: var(--well);
-  padding-top: 7px; padding-bottom: 7px; }
+table.tbl tr.group td { font-size: 13px; font-weight: 600; color: var(--ink-2); background: var(--well);
+  padding-top: 8px; padding-bottom: 8px; letter-spacing: 0.06em; text-transform: uppercase; }
 table.tbl tr.cut td { border-bottom: 2px solid var(--accent); }
 .prob { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
 .prob .track { width: 110px; height: 6px; border-radius: 3px; background: var(--line-faint); overflow: hidden; flex: none; }
 .prob .fill { height: 100%; background: var(--accent); border-radius: 3px; }
 .prob .fill.low { background: var(--ink-3); opacity: 0.45; }
-.prob .val { width: 38px; text-align: right; }
-.yes { white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--accent); }
+.prob .val { width: 40px; text-align: right; }
+.yes { white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--accent); }
 .yes::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
-.no { font-size: 13px; color: var(--ink-3); }
+.no { font-size: 14px; color: var(--ink-3); }
 
-.facts { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 14px; line-height: 1.55; }
-.facts li { margin-bottom: 6px; }
-.decision { border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
-.decision .row { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0;
-  border-bottom: 1px solid var(--line-faint); font-size: 14px; color: var(--ink-2); }
+.facts { margin: 0; padding-left: 18px; color: var(--ink); font-size: 16px; line-height: 1.5; }
+.facts li { margin-bottom: 8px; text-wrap: pretty; }
+.decision { border: 1px solid var(--line); border-radius: 12px; padding: 8px 18px; }
+.decision .row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0;
+  border-bottom: 1px solid var(--line-faint); font-size: 15px; color: var(--ink-2); }
 .decision .row:last-child { border-bottom: none; }
 .decision .row b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.foot { font-size: 12.5px; color: var(--ink-3); margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--line-faint);
-  line-height: 1.5; }
+.foot { font-size: 14px; color: var(--ink-3); margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--line-faint);
+  line-height: 1.5; text-wrap: pretty; }
 [data-testid="stExpander"] details { border-radius: 10px; }
 [data-testid="stExpander"] summary p { font-weight: 500; }
 
@@ -157,18 +175,23 @@ table.tbl tr.cut td { border-bottom: 2px solid var(--accent); }
 @media (max-width: 640px) {
   /* on a phone the decision goes above the form, so the answer is the first thing you see */
   [data-testid="stHorizontalBlock"]:has(.result-card) > div:nth-child(2) { order: -1; }
-  .block-container, [data-testid="stMainBlockContainer"] { padding: 1.25rem 1rem 3rem; }
-  .app-head .title { font-size: 23px; }
-  .app-head .sub { font-size: 14.5px; }
+  .block-container, [data-testid="stMainBlockContainer"] { padding: 1.5rem 1rem 3rem; }
+  .app-head .title { font-size: 28px; }
+  .app-head .sub { font-size: 17px; }
+  [data-testid="stTab"] p { font-size: 14px !important; }
+  [data-testid="stTab"] { padding-left: 0 !important; padding-right: 0 !important; }
+  [role="tablist"] { gap: 0 !important; justify-content: space-between; }
+  table.tbl { font-size: 14px; }
+  table.tbl th { letter-spacing: 0; text-transform: none; }
   .hide-sm { display: none; }
   .prob .track { display: none; }
   table.tbl.wide { min-width: 520px; }
-  table.tbl { font-size: 13.5px; }
   table.tbl td, table.tbl th { padding: 9px 6px; }
-  .kpi { padding: 12px 12px 13px; }
-  .kpi .value { font-size: 22px; }
-  .result-card .big { font-size: 38px; }
-  .stat .v { font-size: 18px; }
+  .kpi { padding: 14px 14px; }
+  .kpi .note { white-space: normal; }
+  .stat { padding: 12px 14px; }
+  .stat .v { font-size: 20px; }
+  .kpi .value { font-size: 28px; }
 }
 </style>
 """
@@ -248,20 +271,19 @@ base_rate = test_m["prevalence"]
 st.html(CSS)
 st.html(f"""
 <div class="app-head">
-  <div class="eyebrow">Online store, 12,205 browsing sessions, UCI Online Shoppers dataset</div>
   <div class="title">Who should see the discount pop-up?</div>
-  <div class="sub">When a visitor is about to leave, the model scores how close they are to buying. The top 10% of
-  sessions get a discount pop-up. Everyone else leaves without one.</div>
+  <div class="sub">When a visitor moves to leave, the model scores how close they are to buying, and the top 10%
+  get a discount pop-up.</div>
 </div>
 <div class="kpis">
   <div class="kpi lead"><div class="label">Pop-ups that reach buyers</div><div class="value">{pct(test_m['precision_at_10pct'])}</div>
-    <div class="note">Top 10% of {len(tests):,} test sessions. A random 10%: {pct(base_rate)}</div></div>
+    <div class="note">vs {pct(base_rate)} at random</div></div>
   <div class="kpi"><div class="label">PR-AUC on test sessions</div><div class="value">{test_m['pr_auc']:.2f}</div>
-    <div class="note">Best rule without page value: {rule_b['test_pr_auc']:.2f}</div></div>
+    <div class="note">vs {rule_b['test_pr_auc']:.2f} for the best rule</div></div>
   <div class="kpi"><div class="label">Buyers reached</div><div class="value">{pct(test_m['recall_at_10pct'])}</div>
-    <div class="note">Of all test buyers, with pop-ups on 10% of sessions</div></div>
+    <div class="note">of all buyers, from 10% of sessions</div></div>
   <div class="kpi muted"><div class="label">PR-AUC if page value were used</div><div class="value">{with_pv['test_pr_auc']:.2f}</div>
-    <div class="note">Not deployable. The column partly records the purchase itself</div></div>
+    <div class="note">Not deployable: it leaks the sale</div></div>
 </div>
 """)
 
@@ -285,9 +307,7 @@ if "ProductRelated" not in st.session_state:
 with tab_score:
     left, right = st.columns([1.15, 1], gap="large")
     with left:
-        st.html('<div class="section-title">Session at exit intent</div>'
-                '<div class="section-note">What the site knows when the visitor moves to leave. '
-                'Page value is left out on purpose.</div>')
+        st.html('<div class="section-title">Session at exit intent</div>')
         st.segmented_control("Start from an example session", list(PRESETS), key="preset", on_change=apply_preset)
         with st.container(border=True):
             st.html('<div class="group-label">Pages viewed so far</div>')
@@ -302,9 +322,9 @@ with tab_score:
             b.number_input("Minutes on info pages", min_value=0.0, max_value=45.0, step=0.5, format="%.1f", key="info_min")
             st.html('<div class="group-label" style="margin-top:6px">How those pages usually perform</div>')
             a, b = st.columns(2)
-            a.slider("Exit rate of pages visited (%)", 0.0, 20.0, step=0.5, key="exit_pct",
+            a.slider("Exit rate of pages visited (%)", 0.0, 20.0, step=0.5, format="%.1f", key="exit_pct",
                      help="Google Analytics: how often other visitors leave the site from these pages")
-            b.slider("Bounce rate of pages visited (%)", 0.0, 20.0, step=0.5, key="bounce_pct")
+            b.slider("Bounce rate of pages visited (%)", 0.0, 20.0, step=0.5, format="%.1f", key="bounce_pct")
             st.html('<div class="group-label" style="margin-top:6px">Visit</div>')
             a, b = st.columns(2)
             a.selectbox("Month", config.MONTHS, format_func=lambda m: MONTH_NAMES[m], key="Month")
@@ -351,7 +371,6 @@ with tab_score:
     with right:
         st.html(f"""
 <div class="section-title">Decision</div>
-<div class="section-note">The pop-up line is set so that about 10% of sessions cross it.</div>
 <div class="result-card">
   <div class="label">Purchase probability</div>
   <div class="big">{pct(p)}</div>
@@ -362,17 +381,15 @@ with tab_score:
     <div class="mark" style="left:calc({min(p, 0.995) * 100:.1f}% - 1px)"></div>
   </div>
   <div class="scale-labels">
-    <span class="hide-sm" style="left:0">0%</span>
     <span style="left:{base_rate * 100:.1f}%;transform:translateX(-50%)">Average {pct(base_rate)}</span>
     <span style="left:{threshold * 100:.1f}%">Pop-up line {pct(threshold)}</span>
     <span class="hide-sm" style="right:0">100%</span>
   </div>
-  <div class="action">{esc(action)} That is {times_avg:.1f} times the average session.</div>
+  <div class="action">{esc(action)} That is {times_avg:.1f}&times; the average session.</div>
 </div>
 """)
-        st.html('<div class="section-title" style="margin-top:22px">What moves this prediction</div>'
-                '<div class="section-note">Change in probability when one input is reset to a typical session '
-                '(median of each number, most common category). Blue raises the chance, grey lowers it.</div>')
+        st.html('<div class="section-title with-note" style="margin-top:28px">What moves this prediction</div>'
+                '<div class="section-note">Change when one input is reset to a typical session.</div>')
         if contrib.empty:
             st.caption("No single input moves the probability by more than half a point.")
         else:
@@ -383,15 +400,15 @@ with tab_score:
                                                                range=[ACCENT, MUTED]), legend=None),
                 tooltip=[alt.Tooltip("input:N", title="Input"), alt.Tooltip("change:Q", format="+.1%", title="Change")],
             ).properties(height=34 * len(contrib) + 36).configure_view(stroke=None).configure_axis(
-                grid=False, domainColor="#e2e5ea", labelColor="#4a5361", labelFontSize=12.5, tickColor="#e2e5ea",
-                labelFont="Inter")
+                grid=False, domainColor="#e2e5ea", labelColor="#4a5361", labelFontSize=13.5, tickColor="#e2e5ea",
+                labelFont="Inter").configure_axisX(labelFontSize=13, labelColor="#646d7a")
             st.altair_chart(chart, width="stretch")
 
 # ---------------- Test sessions ----------------
 with tab_tests:
-    st.html(f'<div class="section-title">{len(tests):,} held-out sessions, ranked by the model</div>'
-            '<div class="section-note">The model never saw these sessions while training. Pick a pop-up budget and '
-            'see who would get one, and who really bought.</div>')
+    st.html(f'<div class="section-title with-note">{len(tests):,} held-out sessions, ranked by the model</div>'
+            '<div class="section-note">Never seen in training. Pick a budget to see who gets a pop-up, '
+            'and who really bought.</div>')
     c1, c2, c3 = st.columns([1.2, 1, 1])
     budget = c1.slider("Pop-up budget, share of sessions", 5, 30, 10, step=1, format="%d%%")
     month_pick = c2.selectbox("Month", ["All months"] + config.MONTHS,
@@ -416,11 +433,11 @@ with tab_tests:
     st.html(f"""
 <div class="stats">
   <div class="stat"><div class="k">Pop-ups shown</div><div class="v">{n_popups:,}</div>
-    <div class="s">{budget}% of {len(shown):,} sessions</div></div>
+    <div class="s">{budget}% of {len(shown):,}</div></div>
   <div class="stat"><div class="k">Went to buyers</div><div class="v accent">{hits:,}</div>
     <div class="s">{pct(precision)} of pop-ups</div></div>
   <div class="stat"><div class="k">At random</div><div class="v">{random_hits:,.0f}</div>
-    <div class="s">Same budget, no model</div></div>
+    <div class="s">same budget, no model</div></div>
   <div class="stat"><div class="k">Buyers reached</div><div class="v">{pct(recall)}</div>
     <div class="s">of {buyers_total:,} who bought</div></div>
 </div>
@@ -450,15 +467,15 @@ with tab_tests:
         if st.button(f"Show {min(page_size, len(shown) - rows_to_show)} more"):
             st.session_state["show_rows"] = rows_to_show + page_size
             st.rerun()
-    st.caption(f"Ranked by purchase probability. With the whole test set, the fixed pop-up line ({pct(threshold)}) "
-               f"flags {pct(test_m['flag_rate_at_threshold'], 1)} of sessions, close to the planned 10%. In November "
-               "it would flag far more, so the line has to be re-set each month (see the monitoring runbook).")
+    st.html(f'<div class="note">The fixed pop-up line ({pct(threshold)}) flags '
+            f'{pct(test_m["flag_rate_at_threshold"], 1)} of all test sessions, close to the planned 10%. '
+            'November would flag far more, so the line is re-set each month.</div>')
 
 # ---------------- How the model works ----------------
 with tab_how:
-    st.html('<div class="section-title">Baselines against the models</div>'
-            '<div class="section-note">CV is 5 stratified folds on the 9,764 training sessions. Test is the 2,441 '
-            'held-out sessions, opened once. Precision and recall are at a 10% pop-up budget.</div>')
+    st.html('<div class="section-title with-note">Baselines against the models</div>'
+            '<div class="section-note">CV: 5 folds on 9,764 training sessions. Test: 2,441 held-out sessions, '
+            'opened once. Precision and recall at a 10% budget.</div>')
     final_run = results[results["kind"] == "final"].index[0]
     groups = [
         ("Without page value (deployable)", [
@@ -497,15 +514,14 @@ with tab_how:
             classes.append("hl" if run == final_run else "")
     st.html(table_html([("Approach", ""), ("CV PR-AUC", "num hide-sm"), ("Test PR-AUC", "num"),
                         ("Test ROC-AUC", "num hide-sm"), ("Precision", "num"), ("Recall", "num hide-sm")], rows, classes))
-    st.caption(f"Accuracy is not shown on purpose. \"Nobody buys\" is {pct(results.loc['baseline_constant_nobody_buys', 'test_accuracy_at_0_5'])} "
-               "accurate and finds no one.")
+    st.html(f'<div class="note">Accuracy is left out on purpose: &ldquo;nobody buys&rdquo; is '
+            f'{pct(results.loc["baseline_constant_nobody_buys", "test_accuracy_at_0_5"])} accurate and finds no one.</div>')
 
     st.write("")
     left, right = st.columns([1.1, 1], gap="large")
     with left:
-        st.html('<div class="section-title">What the model relies on</div>'
-                '<div class="section-note">Drop in test PR-AUC when one input is shuffled. Exit rate, time on product '
-                'pages and the month do most of the work. The six inputs not shown move it by less than 0.001.</div>')
+        st.html('<div class="section-title with-note">What the model relies on</div>'
+                '<div class="section-note">Drop in test PR-AUC when one input is shuffled.</div>')
         importance = importance_table().sort_values("importance_mean", ascending=False).head(10)
         importance["input"] = importance["feature"].map(INPUT_LABELS)
         importance["shown"] = importance["importance_mean"].clip(lower=0)
@@ -516,8 +532,8 @@ with tab_how:
                      alt.Tooltip("importance_mean:Q", format=".3f", title="Mean drop"),
                      alt.Tooltip("importance_std:Q", format=".3f", title="Std")],
         ).properties(height=320).configure_view(stroke=None).configure_axis(
-            grid=False, domainColor="#e2e5ea", labelColor="#4a5361", labelFontSize=12.5, tickColor="#e2e5ea",
-            labelFont="Inter")
+            grid=False, domainColor="#e2e5ea", labelColor="#4a5361", labelFontSize=13.5, tickColor="#e2e5ea",
+            labelFont="Inter").configure_axisX(labelFontSize=13, labelColor="#646d7a")
         st.altair_chart(chart, width="stretch")
     with right:
         leak = pd.read_csv(config.REPORTS_DIR / "leakage_check_pagevalues.csv", index_col=0)["value"]
@@ -525,9 +541,9 @@ with tab_how:
         nov_flag = slices.loc[("Month", "Nov"), "flag_rate"]
         feb_oct_flag = slices.loc[("Season", "Feb-Oct"), "flag_rate"]
         st.html(f"""
-<div class="section-title">Why page value is left out</div>
-<div class="section-note">Google Analytics gives a page value when a purchase follows the page in the same session.
-So a buying session's own purchase feeds the number. At exit intent that purchase has not happened yet.</div>
+<div class="section-title with-note">Why page value is left out</div>
+<div class="section-note">A page gets a value when a purchase follows it in the same session, so the number already
+contains the sale we are trying to predict.</div>
 <div class="decision">
   <div class="row"><span>Buy rate when page value is above zero</span><b>{pct(leak['buy_rate_pagevalue_above_0'])}</b></div>
   <div class="row"><span>Buy rate when it is zero</span><b>{pct(leak['buy_rate_pagevalue_0'])}</b></div>
@@ -535,7 +551,7 @@ So a buying session's own purchase feeds the number. At exit intent that purchas
   <div class="row"><span>Non-buyers with a page value</span><b>{pct(leak['share_of_nonbuyers_with_pagevalue'])}</b></div>
   <div class="row"><span>CV PR-AUC without it, with it</span><b>{leak['best_cv_pr_auc_without_pagevalues']:.2f}, {leak['best_cv_pr_auc_with_pagevalues']:.2f}</b></div>
 </div>
-<div class="section-title" style="margin-top:20px">Limitations</div>
+<div class="section-title" style="margin-top:28px">Limitations</div>
 <ul class="facts">
   <li>Every counter covers the whole session, not just the part before exit intent, so all scores are a bit optimistic.</li>
   <li>The model predicts who buys, not who buys because of the pop-up. Only a live test with a hold-out group can measure that.</li>
@@ -544,6 +560,6 @@ So a buying session's own purchase feeds the number. At exit intent that purchas
 </ul>
 """)
 
-    st.html(f"""<div class="foot">Data: Sakar, Polat, Katircioglu and Kastro (2019), Online Shoppers Purchasing Intention
+    st.html(f"""<div class="foot">Data: 12,205 sessions from one online store. Sakar, Polat, Katircioglu and Kastro (2019), Online Shoppers Purchasing Intention
 Dataset, UCI Machine Learning Repository (id 468), CC BY 4.0, accessed 26 November 2026. Model {esc(meta['model_version'])}
 ({esc(meta['model_family'].replace('_', ' '))}), MLflow run {esc(meta['mlflow_run_id'][:8])}, pop-up line {threshold:.3f}.</div>""")
