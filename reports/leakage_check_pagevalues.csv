@@ -1,0 +1,10 @@
+,value
+buy_rate_pagevalue_above_0,0.5614997713763146
+buy_rate_pagevalue_0,0.03932954995380757
+share_of_buyers_with_pagevalue,0.8047182175622543
+share_of_nonbuyers_with_pagevalue,0.1164117504248604
+pagevalues_alone_roc_auc,0.8620299052086406
+pagevalues_alone_pr_auc,0.6202424772951158
+best_cv_pr_auc_without_pagevalues,0.38449740285301226
+best_cv_pr_auc_with_pagevalues,0.7539045525384598
+cv_pr_auc_gain_from_pagevalues,0.3694071496854475

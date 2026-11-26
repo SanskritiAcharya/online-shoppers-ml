@@ -1,0 +1,9 @@
+params,mean_test_score,std_test_score,rank_test_score
+"{'model__max_depth': None, 'model__max_features': 0.3, 'model__min_samples_leaf': 20}",0.7539045525384598,0.021004075843146005,1
+"{'model__max_depth': 10, 'model__max_features': 0.3, 'model__min_samples_leaf': 5}",0.7537829654296758,0.020333432380132552,2
+"{'model__max_depth': 10, 'model__max_features': 0.3, 'model__min_samples_leaf': 20}",0.753451216644101,0.021811334374872263,3
+"{'model__max_depth': None, 'model__max_features': 0.3, 'model__min_samples_leaf': 5}",0.7521096661685125,0.01900593278957767,4
+"{'model__max_depth': 10, 'model__max_features': 'sqrt', 'model__min_samples_leaf': 5}",0.7494216080152596,0.022857716347808317,5
+"{'model__max_depth': None, 'model__max_features': 'sqrt', 'model__min_samples_leaf': 5}",0.7485908292645049,0.01821806467824968,6
+"{'model__max_depth': 10, 'model__max_features': 'sqrt', 'model__min_samples_leaf': 20}",0.7401932097067627,0.023063751080897435,7
+"{'model__max_depth': None, 'model__max_features': 'sqrt', 'model__min_samples_leaf': 20}",0.7365895655054917,0.0220316687951799,8

@@ -1,0 +1,17 @@
+params,mean_test_score,std_test_score,rank_test_score
+"{'model__l2_regularization': 1.0, 'model__learning_rate': 0.03, 'model__max_depth': 6, 'model__max_iter': 150}",0.38449740285301226,0.019365811268679645,1
+"{'model__l2_regularization': 0.0, 'model__learning_rate': 0.03, 'model__max_depth': 6, 'model__max_iter': 150}",0.38092735295409236,0.015866347194184085,2
+"{'model__l2_regularization': 0.0, 'model__learning_rate': 0.1, 'model__max_depth': 3, 'model__max_iter': 150}",0.3774147485008682,0.020337922052088172,3
+"{'model__l2_regularization': 0.0, 'model__learning_rate': 0.03, 'model__max_depth': 3, 'model__max_iter': 400}",0.37702597578143526,0.02378986846197584,4
+"{'model__l2_regularization': 1.0, 'model__learning_rate': 0.03, 'model__max_depth': 3, 'model__max_iter': 400}",0.37591895517362356,0.02149777010970671,5
+"{'model__l2_regularization': 1.0, 'model__learning_rate': 0.03, 'model__max_depth': 6, 'model__max_iter': 400}",0.3758265000938914,0.01772838798230597,6
+"{'model__l2_regularization': 1.0, 'model__learning_rate': 0.1, 'model__max_depth': 6, 'model__max_iter': 150}",0.3745953788278834,0.01973398323149766,7
+"{'model__l2_regularization': 0.0, 'model__learning_rate': 0.03, 'model__max_depth': 6, 'model__max_iter': 400}",0.3742493855410359,0.015767098325231797,8
+"{'model__l2_regularization': 0.0, 'model__learning_rate': 0.1, 'model__max_depth': 6, 'model__max_iter': 150}",0.3731143114858292,0.016176261423368046,9
+"{'model__l2_regularization': 1.0, 'model__learning_rate': 0.1, 'model__max_depth': 3, 'model__max_iter': 150}",0.37251485394529815,0.01932980691807816,10
+"{'model__l2_regularization': 1.0, 'model__learning_rate': 0.03, 'model__max_depth': 3, 'model__max_iter': 150}",0.36838265395744496,0.024302775939799244,11
+"{'model__l2_regularization': 0.0, 'model__learning_rate': 0.03, 'model__max_depth': 3, 'model__max_iter': 150}",0.36750934387022527,0.023132427534475593,12
+"{'model__l2_regularization': 1.0, 'model__learning_rate': 0.1, 'model__max_depth': 3, 'model__max_iter': 400}",0.36537358041621704,0.016798996912136877,13
+"{'model__l2_regularization': 0.0, 'model__learning_rate': 0.1, 'model__max_depth': 3, 'model__max_iter': 400}",0.3644993009126634,0.02109214965489641,14
+"{'model__l2_regularization': 0.0, 'model__learning_rate': 0.1, 'model__max_depth': 6, 'model__max_iter': 400}",0.3504308813763281,0.010332166336063776,15
+"{'model__l2_regularization': 1.0, 'model__learning_rate': 0.1, 'model__max_depth': 6, 'model__max_iter': 400}",0.34833518663506685,0.009922323739393337,16

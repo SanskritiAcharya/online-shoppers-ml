@@ -1,0 +1,17 @@
+feature,psi,status
+TrafficType,0.8111253647226013,act
+SpecialDay,0.7828238888048473,act
+p_buy,0.35310437952701174,act
+ProductRelated_Duration,0.0958656557826417,stable
+VisitorType,0.09067846371801427,stable
+ProductRelated,0.08519963831253445,stable
+OperatingSystems,0.07759934531441955,stable
+Browser,0.06852819021227877,stable
+ExitRates,0.05545176631355121,stable
+BounceRates,0.04428494211892452,stable
+Region,0.035398689778702586,stable
+Informational,0.015817325441424966,stable
+Administrative,0.008765738662534196,stable
+Informational_Duration,0.007075996494745537,stable
+Administrative_Duration,0.003310468750814706,stable
+Weekend,0.0016689288542434805,stable

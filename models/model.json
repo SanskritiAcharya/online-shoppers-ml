@@ -1,0 +1,120 @@
+{
+  "model_name": "shoppers-popup-purchase",
+  "model_version": "1.0.0",
+  "model_family": "hist_gradient_boosting",
+  "description": "Probability that this browsing session ends in a purchase, scored when the visitor shows exit intent. The top 10% of sessions get the discount pop-up.",
+  "trained_at_utc": "2026-11-26T16:03:53+00:00",
+  "training_rows": 9764,
+  "test_rows": 2441,
+  "training_data": "UCI Online Shoppers Purchasing Intention (id 468), duplicates dropped, stratified 80% split",
+  "data_md5": "cc6ec1db03b4f10f8de52c56ff48b085",
+  "git_commit": "04bb64bb61d8f0fe09a409cc3cac02f0e872a5c3",
+  "mlflow_run_id": "b827080ad0ba4c82b3927e9dc6d26a30",
+  "input_features": [
+    "Administrative",
+    "Informational",
+    "ProductRelated",
+    "Administrative_Duration",
+    "Informational_Duration",
+    "ProductRelated_Duration",
+    "BounceRates",
+    "ExitRates",
+    "SpecialDay",
+    "Month",
+    "VisitorType",
+    "OperatingSystems",
+    "Browser",
+    "Region",
+    "TrafficType",
+    "Weekend"
+  ],
+  "categorical_features": [
+    "Month",
+    "VisitorType",
+    "OperatingSystems",
+    "Browser",
+    "Region",
+    "TrafficType"
+  ],
+  "engineered_features": [
+    "total_pages",
+    "total_duration",
+    "product_page_share",
+    "seconds_per_product_page"
+  ],
+  "excluded_features": {
+    "PageValues": "credited by the session's own purchase, not known at exit intent"
+  },
+  "best_params": {
+    "l2_regularization": 1.0,
+    "learning_rate": 0.03,
+    "max_depth": 6,
+    "max_iter": 150
+  },
+  "threshold": 0.3423,
+  "popup_capacity": 0.1,
+  "cv_metrics": {
+    "pr_auc_mean": 0.3845,
+    "roc_auc_mean": 0.7792,
+    "precision_at_10pct_mean": 0.4441,
+    "pr_auc_std": 0.0194,
+    "roc_auc_std": 0.0121,
+    "precision_at_10pct_std": 0.0235
+  },
+  "test_metrics": {
+    "pr_auc": 0.3718,
+    "roc_auc": 0.7896,
+    "precision_at_10pct": 0.4508,
+    "recall_at_10pct": 0.288,
+    "accuracy_at_0_5": 0.8406,
+    "prevalence": 0.1565,
+    "flag_rate_at_threshold": 0.1106,
+    "precision_at_threshold": 0.4481,
+    "recall_at_threshold": 0.3168,
+    "brier": 0.1131
+  },
+  "allowed_values": {
+    "Month": [
+      "Feb",
+      "Mar",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    "VisitorType": [
+      "Returning_Visitor",
+      "New_Visitor",
+      "Other"
+    ]
+  },
+  "typical_session": {
+    "Administrative": 1.0,
+    "Informational": 0.0,
+    "ProductRelated": 18.0,
+    "Administrative_Duration": 9.0,
+    "Informational_Duration": 0.0,
+    "ProductRelated_Duration": 617.0,
+    "BounceRates": 0.002857143,
+    "ExitRates": 0.025,
+    "SpecialDay": 0.0,
+    "Month": "May",
+    "VisitorType": "Returning_Visitor",
+    "OperatingSystems": 2,
+    "Browser": 2,
+    "Region": 1,
+    "TrafficType": 2,
+    "Weekend": 0
+  },
+  "library_versions": {
+    "python": "3.12.11",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.1.1",
+    "numpy": "2.5.5",
+    "mlflow": "3.18.0"
+  }
+}
