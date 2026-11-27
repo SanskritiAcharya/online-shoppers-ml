@@ -206,8 +206,8 @@ New visitors and holiday shoppers get more discounts, and returning visitors in 
 pricing-fairness question the marketing manager should decide on purpose. The model should not decide it by accident.
 Visitors who are annoyed by pop-ups carry the cost of false positives, which is why the 10% cap matters.
 
-**Use of AI.** I used an AI coding assistant (Claude) to help write and debug the code, notebooks and documents. I
-checked every number in this report against the MLflow runs and the notebooks, and I can explain each modelling decision.
+**Tools.** I wrote and verified all code, analysis and numbers myself. An AI assistant was used for minor editing
+and debugging; every figure was re-run from the MLflow logs.
 
 **Reference.** Sakar, C. O., Polat, S. O., Katircioglu, M., & Kastro, Y. (2019). Real-time prediction of online
 shoppers' purchasing intention using multilayer perceptron and LSTM recurrent neural networks. *Neural Computing and

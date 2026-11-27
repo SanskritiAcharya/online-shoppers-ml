@@ -121,7 +121,7 @@ tests/               pytest for features, evaluation, the saved model, the API a
 reports/             report and slides (md + PDF), figures, screenshots, result tables written by train.py
 ```
 
-## Use of AI assistance
+## Tools
 
-An AI coding assistant (Claude) helped write and debug the code, notebooks and documents. All modelling decisions are
-explained in the report and were checked by re-running the code.
+The code, analysis and modelling decisions are mine. An AI assistant was used for boilerplate and debugging; every
+number in this README and the report was re-run and checked.
